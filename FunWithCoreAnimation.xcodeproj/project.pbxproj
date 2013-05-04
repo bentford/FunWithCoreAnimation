@@ -62,7 +62,6 @@
 		B583998B1735710C0042BB63 = {
 			isa = PBXGroup;
 			children = (
-				B58399BA1735733E0042BB63 /* QuartzCore.framework */,
 				B583999D1735710C0042BB63 /* FunWithCoreAnimation */,
 				B58399961735710C0042BB63 /* Frameworks */,
 				B58399951735710C0042BB63 /* Products */,
@@ -82,6 +81,7 @@
 			children = (
 				B58399971735710C0042BB63 /* UIKit.framework */,
 				B58399991735710C0042BB63 /* Foundation.framework */,
+				B58399BA1735733E0042BB63 /* QuartzCore.framework */,
 				B583999B1735710C0042BB63 /* CoreGraphics.framework */,
 			);
 			name = Frameworks;

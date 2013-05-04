@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "CircleView.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface ViewController ()
 
@@ -20,16 +21,36 @@
     [super viewDidLoad];
     
     CircleView *circleView = [[CircleView alloc] initWithWidth:100];
-    
+    circleView.userInteractionEnabled = YES;
     [self.view addSubview:circleView];
     
-	
+	UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapCircle:)];
+    [circleView addGestureRecognizer:tapGesture];
 }
 
-- (void)didReceiveMemoryWarning
+- (void)didTapCircle:(UITapGestureRecognizer *)tapGesture
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    [self toggleView:tapGesture.view];
 }
 
+- (void)toggleView:(UIView *)view
+{
+    if (view.layer.position.x == 50.0f) {
+        CAKeyframeAnimation *keyFrameAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position.x"];
+        keyFrameAnimation.values = @[ @50.0, @200.0 ];
+        keyFrameAnimation.keyTimes = @[ @0.0, @1.0 ];
+        keyFrameAnimation.duration = 0.3f;
+
+        [view.layer addAnimation:keyFrameAnimation forKey:@"go"];
+        view.layer.position = CGPointMake(200.0f, 50.0f);
+    } else {
+        CAKeyframeAnimation *keyFrameAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position.x"];
+        keyFrameAnimation.values = @[ @200.0, @50.0 ];
+        keyFrameAnimation.keyTimes = @[ @0.0, @1.0 ];
+        keyFrameAnimation.duration = 0.3f;
+        
+        [view.layer addAnimation:keyFrameAnimation forKey:@"go"];
+        view.layer.position = CGPointMake(50.0f, 50.0f);
+    }
+}
 @end
