@@ -1,8 +1,10 @@
-# Goal
+# CocoaHeads
 
-To show how simple game animations can be accomplished with Core Animation.
+I'm presenting at [CocoaHeads PDX](http://cocoaheads.org/us/PortlandOregon/) in June 2013.
 
-I'm presenting in June 2013, so this is WORK IN PROGRESS until my talk. ;)
+This code will be used in the talk.
+
+Is WORK IN PROGRESS for now...
 
 ### Done so far
 
@@ -14,4 +16,4 @@ I'm presenting in June 2013, so this is WORK IN PROGRESS until my talk. ;)
 
 * create card table and flip some cards
 * create checker board and hop some checkers
-* import Chipmunk physics and play
+* import Chipmunk physics from [ButtonWars](https://github.com/bentford/ButtonWars) and play
