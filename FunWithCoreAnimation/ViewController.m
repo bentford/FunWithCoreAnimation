@@ -30,7 +30,34 @@
 
 - (void)didTapCircle:(UITapGestureRecognizer *)tapGesture
 {
-    [self toggleView:tapGesture.view];
+    [self toggleView2:tapGesture.view];
+}
+
+- (void)toggleView2:(UIView *)view
+{
+        
+        CGMutablePathRef path = CGPathCreateMutable();
+        CGPathMoveToPoint(path, NULL, 50.0f, 50.0f);
+        CGPathAddQuadCurveToPoint(path, NULL, 200, 50.0f, 200.0f, 200.0f);
+        
+        CAKeyframeAnimation *movement = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+        movement.path = path;
+    
+        if (view.layer.position.x == 50.0f)
+            movement.keyTimes = @[ @0.0, @1.0 ];
+        else
+            movement.keyTimes = @[ @1.0, @0.0 ];
+    
+        movement.duration = 0.5f;
+
+        [view.layer addAnimation:movement forKey:@"go"];
+        
+    
+    if (view.layer.position.x == 50.0f)
+        view.layer.position = CGPointMake(200.0f, 200.0f);
+    else
+        view.layer.position = CGPointMake(50.0f, 50.0f);
+    
 }
 
 - (void)toggleView:(UIView *)view
@@ -43,14 +70,11 @@
         xMovement.values = @[ @50.0, @200.0 ];
         xMovement.keyTimes = @[ @0.0, @1.0 ];
         xMovement.duration = 0.3f;
-        xMovement.calculationMode = @"cubic";
         
         CAKeyframeAnimation *yMovement = [CAKeyframeAnimation animationWithKeyPath:@"position.y"];
         yMovement.values = @[ @50.0, @200.0 ];
         yMovement.keyTimes = @[ @0.0, @1.0 ];
         yMovement.duration = 0.3f;
-        yMovement.calculationMode = @"cubic";
-        
         
         group.animations = @[xMovement,yMovement];
         
