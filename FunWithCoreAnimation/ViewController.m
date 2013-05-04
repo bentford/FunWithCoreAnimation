@@ -30,28 +30,63 @@
 
 - (void)didTapCircle:(UITapGestureRecognizer *)tapGesture
 {
-    [self toggleView2:tapGesture.view];
+    [self toggleView3:tapGesture.view];
+}
+
+- (void)toggleView3:(UIView *)view
+{
+    
+    CAAnimationGroup *group = [CAAnimationGroup animation];
+    
+    CGMutablePathRef path = CGPathCreateMutable();
+    CGPathMoveToPoint(path, NULL, 50.0f, 50.0f);
+    CGPathAddQuadCurveToPoint(path, NULL, 200, 50.0f, 200.0f, 200.0f);
+    
+    CAKeyframeAnimation *movement = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+    movement.path = path;
+    
+    if (view.layer.position.x == 50.0f)
+        movement.keyTimes = @[ @0.0, @1.0 ];
+    else
+        movement.keyTimes = @[ @1.0, @0.0 ];
+    
+    
+    CAKeyframeAnimation *flip = [CAKeyframeAnimation animationWithKeyPath:@"transform.rotation.x"];
+    flip.values = @[ @0.0f, @3.5f ];
+    flip.keyTimes = @[ @0.0f, @1.0f ];
+    
+    group.animations = @[flip, movement];
+    group.duration = 0.2f;
+    
+    [view.layer addAnimation:group forKey:@"go"];
+    
+    
+    if (view.layer.position.x == 50.0f)
+        view.layer.position = CGPointMake(200.0f, 200.0f);
+    else
+        view.layer.position = CGPointMake(50.0f, 50.0f);
+    
 }
 
 - (void)toggleView2:(UIView *)view
 {
         
-        CGMutablePathRef path = CGPathCreateMutable();
-        CGPathMoveToPoint(path, NULL, 50.0f, 50.0f);
-        CGPathAddQuadCurveToPoint(path, NULL, 200, 50.0f, 200.0f, 200.0f);
-        
-        CAKeyframeAnimation *movement = [CAKeyframeAnimation animationWithKeyPath:@"position"];
-        movement.path = path;
+    CGMutablePathRef path = CGPathCreateMutable();
+    CGPathMoveToPoint(path, NULL, 50.0f, 50.0f);
+    CGPathAddQuadCurveToPoint(path, NULL, 200, 50.0f, 200.0f, 200.0f);
     
-        if (view.layer.position.x == 50.0f)
-            movement.keyTimes = @[ @0.0, @1.0 ];
-        else
-            movement.keyTimes = @[ @1.0, @0.0 ];
-    
-        movement.duration = 0.5f;
+    CAKeyframeAnimation *movement = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+    movement.path = path;
 
-        [view.layer addAnimation:movement forKey:@"go"];
-        
+    if (view.layer.position.x == 50.0f)
+        movement.keyTimes = @[ @0.0, @1.0 ];
+    else
+        movement.keyTimes = @[ @1.0, @0.0 ];
+
+    movement.duration = 0.5f;
+
+    [view.layer addAnimation:movement forKey:@"go"];
+    
     
     if (view.layer.position.x == 50.0f)
         view.layer.position = CGPointMake(200.0f, 200.0f);
