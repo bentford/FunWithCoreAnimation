@@ -30,7 +30,7 @@
 
 - (void)didTapCircle:(UITapGestureRecognizer *)tapGesture
 {
-    [self toggleView3:tapGesture.view];
+    [self toggleBasicAnimationView:tapGesture.view];
 }
 
 - (void)toggleView3:(UIView *)view
@@ -125,6 +125,31 @@
         keyFrameAnimation.duration = 0.3f;
         
         [view.layer addAnimation:keyFrameAnimation forKey:@"go"];
+        view.layer.position = CGPointMake(50.0f, 50.0f);
+    }
+}
+
+- (void)toggleBasicAnimationView:(UIView *)view
+{
+    if (view.layer.position.x == 50.0f) {
+        
+        CABasicAnimation *movement = [CABasicAnimation animationWithKeyPath:@"position"];
+        movement.fromValue = [NSValue valueWithCGPoint:CGPointMake(50.0f, 50.0f)];
+        movement.toValue = [NSValue valueWithCGPoint:CGPointMake(200.0f, 200.0f)];
+        movement.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+
+        [view.layer addAnimation:movement forKey:@"go"];
+        
+        view.layer.position = CGPointMake(200.0f, 200.0f);
+    } else {
+        CABasicAnimation *movement = [CABasicAnimation animationWithKeyPath:@"position"];
+        movement.fromValue = [NSValue valueWithCGPoint:CGPointMake(200.0f, 200.0f)];
+        movement.toValue = [NSValue valueWithCGPoint:CGPointMake(50.0f, 50.0f)];
+        movement.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        movement.duration = 0.3f;
+        
+        [view.layer addAnimation:movement forKey:@"go"];
+        
         view.layer.position = CGPointMake(50.0f, 50.0f);
     }
 }
