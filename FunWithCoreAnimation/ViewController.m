@@ -20,12 +20,13 @@
 {
     [super viewDidLoad];
     
-    CircleView *circleView = [[CircleView alloc] initWithWidth:100];
-    circleView.userInteractionEnabled = YES;
-    [self.view addSubview:circleView];
+    UIImageView *button = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ButtonGreen.png"]];
+    button.center = CGPointMake(50.0f, 50.0f);
+    button.userInteractionEnabled = YES;
+    [self.view addSubview:button];
     
 	UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapCircle:)];
-    [circleView addGestureRecognizer:tapGesture];
+    [button addGestureRecognizer:tapGesture];
 }
 
 - (void)didTapCircle:(UITapGestureRecognizer *)tapGesture
