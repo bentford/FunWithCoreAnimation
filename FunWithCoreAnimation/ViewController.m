@@ -31,8 +31,8 @@
 
 - (void)didTapCircle:(UITapGestureRecognizer *)tapGesture
 {
-    [self toggleBasicAnimationView:tapGesture.view];
-//    [self toggleKeyframeAnimation:tapGesture.view];
+//    [self toggleBasicAnimationView:tapGesture.view];
+    [self toggleKeyframeAnimation:tapGesture.view];
 //    [self toggleKeyframeAlongPath:tapGesture.view];
 //    [self toggleKeyframeAlongPathWithFlip:tapGesture.view];
 }
@@ -106,30 +106,41 @@
         CAAnimationGroup *group = [CAAnimationGroup animation];
         
         CAKeyframeAnimation *xMovement = [CAKeyframeAnimation animationWithKeyPath:@"position.x"];
-        xMovement.values = @[ @50.0, @200.0 ];
-        xMovement.keyTimes = @[ @0.0, @1.0 ];
-        xMovement.duration = 0.3f;
+        xMovement.values = @[ @50.0, @100.0f, @400.0 ];
+        xMovement.keyTimes = @[ @0.0, @0.5f, @1.0 ];
+
         
         CAKeyframeAnimation *yMovement = [CAKeyframeAnimation animationWithKeyPath:@"position.y"];
-        yMovement.values = @[ @50.0, @200.0 ];
+        yMovement.values = @[ @50.0, @400.0 ];
         yMovement.keyTimes = @[ @0.0, @1.0 ];
-        yMovement.duration = 0.3f;
         
-        group.animations = @[xMovement,yMovement];
+        group.animations = @[xMovement, yMovement];
+        group.duration = 1.3f;
         
         [view.layer addAnimation:group forKey:@"go"];
         
         
-        view.layer.position = CGPointMake(200.0f, 200.0f);
+        view.layer.position = CGPointMake(400.0f, 400.f);
         
     } else {
-        CAKeyframeAnimation *keyFrameAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position.x"];
-        keyFrameAnimation.values = @[ @200.0, @50.0 ];
-        keyFrameAnimation.keyTimes = @[ @0.0, @1.0 ];
-        keyFrameAnimation.duration = 0.3f;
         
-        [view.layer addAnimation:keyFrameAnimation forKey:@"go"];
-        view.layer.position = CGPointMake(50.0f, 50.0f);
+        CAAnimationGroup *group = [CAAnimationGroup animation];
+        
+        CAKeyframeAnimation *xMovement = [CAKeyframeAnimation animationWithKeyPath:@"position.x"];
+        xMovement.values = @[ @400.0, @100.0f, @50.0 ];
+        xMovement.keyTimes = @[ @0.0, @0.5f, @1.0 ];
+        
+        CAKeyframeAnimation *yMovement = [CAKeyframeAnimation animationWithKeyPath:@"position.y"];
+        yMovement.values = @[ @400.0, @50.0 ];
+        yMovement.keyTimes = @[ @0.0, @1.0 ];
+        
+        group.animations = @[xMovement, yMovement];
+        group.duration = 1.3f;
+        
+        [view.layer addAnimation:group forKey:@"go"];
+        
+        
+        view.layer.position = CGPointMake(50.0f, 50.0f);        
     }
 }
 
