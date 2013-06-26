@@ -9,16 +9,23 @@
 #import "ViewController.h"
 #import "CircleView.h"
 #import <QuartzCore/QuartzCore.h>
+#import "PathView.h"
 
 @interface ViewController ()
 
 @end
 
 @implementation ViewController
+{
+    PathView *pathView;
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    pathView = [[PathView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 400.0f, 400.0f)];
+//    pathView.hidden = YES;
+    [self.view addSubview:pathView];
     
     UIImageView *button = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ButtonGreen.png"]];
     button.center = CGPointMake(50.0f, 50.0f);
@@ -32,12 +39,13 @@
 - (void)didTapCircle:(UITapGestureRecognizer *)tapGesture
 {
 //    [self toggleBasicAnimationView:tapGesture.view];
-    [self toggleKeyframeAnimation:tapGesture.view];
+//    [self toggleKeyframeAnimation:tapGesture.view];
+    
 //    [self toggleKeyframeAlongPath:tapGesture.view];
-//    [self toggleKeyframeAlongPathWithFlip:tapGesture.view];
+    [self toggleKeyframeAlongPathWithScale:tapGesture.view];
 }
 
-- (void)toggleKeyframeAlongPathWithFlip:(UIView *)view
+- (void)toggleKeyframeAlongPathWithScale:(UIView *)view
 {
     
     CAAnimationGroup *group = [CAAnimationGroup animation];
@@ -55,12 +63,17 @@
         movement.keyTimes = @[ @1.0, @0.0 ];
     
     
-    CAKeyframeAnimation *flip = [CAKeyframeAnimation animationWithKeyPath:@"transform.rotation.x"];
-    flip.values = @[ @0.0f, @3.5f ];
-    flip.keyTimes = @[ @0.0f, @1.0f ];
+    CAKeyframeAnimation *xScale = [CAKeyframeAnimation animationWithKeyPath:@"transform.scale.x"];
+    xScale.values = @[ @1.0f, @2.0f, @1.0f ];
+    xScale.keyTimes = @[ @0.0f, @0.5f, @1.0f ];
     
-    group.animations = @[flip, movement];
-    group.duration = 0.2f;
+    CAKeyframeAnimation *yScale = [CAKeyframeAnimation animationWithKeyPath:@"transform.scale.y"];
+    yScale.values = @[ @1.0f, @2.0f, @1.0f ];
+    yScale.keyTimes = @[ @0.0f, @0.5f, @1.0f ];
+
+    
+    group.animations = @[movement, xScale, yScale];
+    group.duration = 1.3f;
     
     [view.layer addAnimation:group forKey:@"go"];
     

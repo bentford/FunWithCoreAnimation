@@ -20,6 +20,7 @@
 		B58399BB1735733E0042BB63 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B58399BA1735733E0042BB63 /* QuartzCore.framework */; };
 		B58399BE173573710042BB63 /* CircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = B58399BD173573710042BB63 /* CircleView.m */; };
 		B5B9052C177B5AD7003CF838 /* ButtonGreen.png in Resources */ = {isa = PBXBuildFile; fileRef = B5B9052B177B5AD7003CF838 /* ButtonGreen.png */; };
+		B5B9052F177B5DA3003CF838 /* PathView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5B9052E177B5DA3003CF838 /* PathView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,8 @@
 		B58399BC173573710042BB63 /* CircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleView.h; sourceTree = "<group>"; };
 		B58399BD173573710042BB63 /* CircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleView.m; sourceTree = "<group>"; };
 		B5B9052B177B5AD7003CF838 /* ButtonGreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ButtonGreen.png; sourceTree = "<group>"; };
+		B5B9052D177B5DA3003CF838 /* PathView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PathView.h; sourceTree = "<group>"; };
+		B5B9052E177B5DA3003CF838 /* PathView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PathView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +101,8 @@
 				B58399BC173573710042BB63 /* CircleView.h */,
 				B58399BD173573710042BB63 /* CircleView.m */,
 				B5B9052B177B5AD7003CF838 /* ButtonGreen.png */,
+				B5B9052D177B5DA3003CF838 /* PathView.h */,
+				B5B9052E177B5DA3003CF838 /* PathView.m */,
 			);
 			path = FunWithCoreAnimation;
 			sourceTree = "<group>";
@@ -186,6 +191,7 @@
 				B58399A81735710C0042BB63 /* AppDelegate.m in Sources */,
 				B58399B11735710C0042BB63 /* ViewController.m in Sources */,
 				B58399BE173573710042BB63 /* CircleView.m in Sources */,
+				B5B9052F177B5DA3003CF838 /* PathView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
