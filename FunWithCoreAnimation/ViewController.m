@@ -31,9 +31,12 @@
 - (void)didTapCircle:(UITapGestureRecognizer *)tapGesture
 {
     [self toggleBasicAnimationView:tapGesture.view];
+//    [self toggleKeyframeAnimation:tapGesture.view];
+//    [self toggleKeyframeAlongPath:tapGesture.view];
+//    [self toggleKeyframeAlongPathWithFlip:tapGesture.view];
 }
 
-- (void)toggleView3:(UIView *)view
+- (void)toggleKeyframeAlongPathWithFlip:(UIView *)view
 {
     
     CAAnimationGroup *group = [CAAnimationGroup animation];
@@ -68,7 +71,7 @@
     
 }
 
-- (void)toggleView2:(UIView *)view
+- (void)toggleKeyframeAlongPath:(UIView *)view
 {
         
     CGMutablePathRef path = CGPathCreateMutable();
@@ -95,7 +98,7 @@
     
 }
 
-- (void)toggleView:(UIView *)view
+- (void)toggleKeyframeAnimation:(UIView *)view
 {
     if (view.layer.position.x == 50.0f) {
         
