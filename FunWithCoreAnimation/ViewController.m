@@ -38,11 +38,11 @@
 
 - (void)didTapCircle:(UITapGestureRecognizer *)tapGesture
 {
-//    [self toggleBasicAnimationView:tapGesture.view];
+    [self toggleBasicAnimationView:tapGesture.view];
 //    [self toggleKeyframeAnimation:tapGesture.view];
     
 //    [self toggleKeyframeAlongPath:tapGesture.view];
-    [self toggleKeyframeAlongPathWithScale:tapGesture.view];
+//    [self toggleKeyframeAlongPathWithScale:tapGesture.view];
 }
 
 - (void)toggleKeyframeAlongPathWithScale:(UIView *)view
